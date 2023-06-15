@@ -12,6 +12,9 @@ class AdminController < BaseController
     erb :index
   end
 
+  # -------
+  # API処理
+  # -------
   post '/get_hoge' do
     params = JSON.parse(request.body.read)
     p params
