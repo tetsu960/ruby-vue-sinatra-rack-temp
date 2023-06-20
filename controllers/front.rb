@@ -26,6 +26,6 @@ class FrontController < BaseController
   get '/get_hoge' do
     p params
 
-    { result: params[:text] }.to_json
+    { result: 'フリープランで登録しました。' }.to_json
   end
 end

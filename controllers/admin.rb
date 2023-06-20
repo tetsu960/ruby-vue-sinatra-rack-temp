@@ -15,10 +15,9 @@ class AdminController < BaseController
   # -------
   # API処理
   # -------
-  post '/get_hoge' do
-    params = JSON.parse(request.body.read)
+  get '/get_hoge' do
     p params
 
-    { result: params['text'] }.to_json
+    { result: '有料プランで登録しました。' }.to_json
   end
 end

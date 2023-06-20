@@ -1,66 +1,33 @@
 <template>
     <div class="row">
-        <div class="col">TEST_G001</div>
+        <div class="col"><h2>利用料金のご案内</h2></div>
     </div>
-    <HelloWorld msg="ruby-vue-sinatra-rack-temp"></HelloWorld>
-    <div class="row">
-        <div class="col">
-            <button type="button" class="btn btn-primary" @click="this.$router.push('/G002')">Primary</button>
+    <div class="row pt-3 justify-content-center">
+        <div class="col-3">
+            <PriceCard title="フリープラン" :price="0" text="非営利で使用することができるプランです。" @card-click="plan(1)"></PriceCard>
         </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <router-link :to="{ path: '/G002'}" replace>G002</router-link>
-            <p>https://router.vuejs.org/guide/</p>
-        </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-2">
-            <button type="button" class="btn btn-primary" @click="getHoge">実行</button>
-        </div>
-        <div class="col-2">
-            <button type="button" class="btn btn-primary" @click="getAdminHoge">管理</button>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            {{ result }}
+        <div class="col-3">
+            <PriceCard title="有料プラン" :price="1500" text="仕事に必要な機能が備わった充実したサービスです。" @card-click="plan(2)"></PriceCard>
         </div>
     </div>
 </template>
 
 <script>
-import axios from "axios";
-import HelloWorld from "@/components/HelloWorld.vue"
+import PriceCard from "@/components/PriceCard.vue";
+
 export default {
     name: "TEST_G001",
-    components: { HelloWorld },
-
-    data() {
-        return {
-            text: "hogehoge",
-            result: "",
-        };
-    },
-    async mounted() {
-    },
+    components: { PriceCard },
     methods: {
-        async getHoge() {
-            const res = await axios.get("/get_hoge", {
-                params: { text: this.text },
+        plan(type) {
+            this.$router.push({
+                name: 'G002',
+                query: { planType: type },
             });
-            if (res) {
-                this.result = res.data.result;
-            }
-        },        
-        async getAdminHoge() {
-            const res = await axios.post("/admin/get_hoge", {
-                text: `${this.text}-admin`,
-            });
-            if (res) {
-                this.result = res.data.result;
-            }
-        },        
+        }
     },
-};
+}
 </script>
+
+
+
