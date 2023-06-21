@@ -5,7 +5,7 @@
 ### Ruby関連インストール
 
 ```shell
-cd ruby-temp
+cd ruby-vue-sinatra-rack-temp
 bundle config set path 'vendor/bundle'
 bundle install
 ```
